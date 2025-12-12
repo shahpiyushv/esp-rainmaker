@@ -38,12 +38,10 @@ concurrency:
 
 jobs:
   Build:
-    # Disable the job in forks
-    if: ${{ github.repository_owner == 'espressif' }}
 
     runs-on: ubuntu-latest
     container:
-      image: espressif/idf:v5.4.2
+      image: espressif/idf:v5.5.1
     strategy:
       matrix:
         example: [fan, led_light, multi_device, switch, temperature_sensor]
@@ -81,8 +79,6 @@ jobs:
           path: images
 
   deploy:
-    # Disable the job in forks
-    if: ${{ github.repository_owner == 'espressif' }}
 
     needs: Build
 
@@ -91,7 +87,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     container:
-      image: espressif/esp-matter:latest
+      image: espressif/idf:v5.5.1
 
     steps:
       - uses: actions/checkout@v4
