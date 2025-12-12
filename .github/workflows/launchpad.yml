@@ -113,7 +113,7 @@ jobs:
           echo "" >> build_cfg.md
           echo "" >> build_cfg.md
           echo "- ESP-IDF: [`git -C $IDF_PATH rev-parse HEAD`](https://github.com/espressif/esp-idf/tree/`git -C $IDF_PATH rev-parse HEAD`)" >> build_cfg.md
-          echo "- ESP-RainMaker: [${{steps.checkout.outputs.commit}}](https://github.com/espressif/esp-rainmaker/tree/${{steps.checkout.outputs.commit}})" >> build_cfg.md
+          echo "- ESP-RainMaker: [${{steps.checkout.outputs.commit}}](https://github.com/shahpiyushv/esp-rainmaker/tree/${{steps.checkout.outputs.commit}})" >> build_cfg.md
           echo "" >> build_cfg.md
           echo "" >> build_cfg.md
 
