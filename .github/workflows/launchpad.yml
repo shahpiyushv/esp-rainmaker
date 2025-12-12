@@ -44,7 +44,7 @@ jobs:
       image: espressif/idf:v5.5.1
     strategy:
       matrix:
-        example: [ed_light]
+        example: [led_light]
         target: [esp32, esp32c3]
 
     steps:
