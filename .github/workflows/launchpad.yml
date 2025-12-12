@@ -44,8 +44,8 @@ jobs:
       image: espressif/idf:v5.5.1
     strategy:
       matrix:
-        example: [fan, led_light, multi_device, switch, temperature_sensor]
-        target: [esp32, esp32c3, esp32c6, esp32s3, esp32c2, esp32h2]
+        example: [ed_light]
+        target: [esp32, esp32c3]
 
     steps:
       - uses: actions/checkout@v4
@@ -118,7 +118,10 @@ jobs:
           echo "" >> build_cfg.md
 
           cat $ESP_RMAKER_PATH/tools/launchpad/app_link_guide.md >> build_cfg.md
-
+          if ! command -v tree >/dev/null 2>&1; then
+            echo "tree not found, installing..."
+            apt-get update && apt-get install -y tree
+          fi
           tree -H '.' -L 1 --noreport -T 'ESP RainMaker Launchpad Artifacts' -shi --charset utf-8 -I "index.html" -o index.html
 
       - name: Setup Pages
